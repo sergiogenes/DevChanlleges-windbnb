@@ -1,36 +1,23 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+
 import './App.css'
+import { type Stay } from './types'
+import staysJson from './assets/stays.json'
+import { Navbar } from './components/Navbar'
+import { Header } from './components/Header'
+import { CardContainer } from './components/CardContainer'
 
 function App(): JSX.Element {
-  const [count, setCount] = useState(0)
+  const Initial_State = staysJson as Stay[]
+  const [stays, setStays] = useState(Initial_State)
+
   return (
     <>
-      <div>
-        <a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank' rel='noreferrer'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
+      <div className='app-container'>
+        <Navbar />
+        <Header staysNumber={stays.length} />
+        <CardContainer stays={stays} />
       </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button
-          onClick={() => {
-            setCount((count) => count + 1)
-          }}
-        >
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }

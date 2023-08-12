@@ -1,0 +1,47 @@
+.super-host {
+  display: grid;
+  place-items: center;
+  width: 100px;
+  height: 28px;
+  border-radius: 12px;
+  border: 1px solid #4f4f4f;
+  color: #4f4f4f;
+  font-family: Montserrat;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.card {
+  width: 395px;
+  height: 344px;
+}
+.card img {
+  width: 100%;
+  height: 269px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 24px;
+  margin-bottom: 15px;
+}
+
+.card figcaption .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.type-stay-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 11px;
+}
+.stay-rating {
+  gap: 3px;
+}
+.stay-rating .material-icons {
+  color: #eb5757;
+}
