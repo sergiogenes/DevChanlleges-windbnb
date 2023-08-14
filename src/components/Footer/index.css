@@ -1,0 +1,24 @@
+footer {
+  margin: 101px auto 26px;
+  text-align: center;
+}
+
+footer p {
+  color: #828282;
+  text-align: center;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+footer p strong {
+  color: #828282;
+  font-family: Montserrat;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-decoration-line: underline;
+}

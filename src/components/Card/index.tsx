@@ -25,8 +25,15 @@ export const Card: React.FC<Props> = ({ stay }) => {
           </div>
           <span className='stay-rating row'>
             <span className='material-icons'>star</span>
-            <span> {stay.rating}</span>
+            <span className='rating-number'> {stay.rating}</span>
           </span>
+        </div>
+        <div className='row'>
+          <h5>
+            {stay.title.length > 39
+              ? stay.title.slice(0, 37).concat('...')
+              : stay.title}
+          </h5>
         </div>
       </figcaption>
     </figure>

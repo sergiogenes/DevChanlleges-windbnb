@@ -6,6 +6,7 @@ import staysJson from './assets/stays.json'
 import { Navbar } from './components/Navbar'
 import { Header } from './components/Header'
 import { CardContainer } from './components/CardContainer'
+import { Footer } from './components/Footer'
 
 function App(): JSX.Element {
   const Initial_State = staysJson as Stay[]
@@ -17,6 +18,7 @@ function App(): JSX.Element {
         <Navbar />
         <Header staysNumber={stays.length} />
         <CardContainer stays={stays} />
+        <Footer />
       </div>
     </>
   )
