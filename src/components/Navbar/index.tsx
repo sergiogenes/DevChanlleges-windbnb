@@ -40,6 +40,22 @@ export const Navbar = () => {
             <span className='material-icons'>search</span>
           </button>
         </form>
+        <div className='location-options'>
+          <ul>
+            <li>
+              <option value='Helsinki, Finland'> Helsinki, Finland</option>
+            </li>
+            <li>
+              <option value='Turku, Finland'>Turku, Finland</option>
+            </li>
+            <li>
+              <option value='Oulu, Finland'>Oulu, Finland</option>
+            </li>
+            <li>
+              <option value='Vaasa, Finland'>Vaasa, Finland</option>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   )
