@@ -180,9 +180,11 @@ label:focus {
 }
 
 .location-options {
+  opacity: 0;
   position: absolute;
   top: 189px;
   left: 123px;
+  z-index: 2;
 }
 .location-options ul {
   list-style: none;
@@ -205,4 +207,35 @@ label:focus {
   content: '\e0c8';
   font-size: 19.5px;
   margin-right: 10px;
+}
+
+.guests-container {
+  position: absolute;
+  opacity: 0;
+  top: 196px;
+  left: 537px;
+}
+.guests-container .guests-options {
+  margin-bottom: 65px;
+}
+.guests-container .guests-options h4 {
+  color: #333;
+  font-family: Mulish;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.guests-container .guests-options p {
+  color: #bdbdbd;
+  font-family: Mulish;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 12px;
+}
+
+.visible {
+  opacity: 1;
 }

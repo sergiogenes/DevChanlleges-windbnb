@@ -4,5 +4,26 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 input[type='number'] {
-  -moz-appearance: textfield;
+  text-align: center;
+  width: 40px;
+}
+
+.inputNumber-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.inputNumber-container button {
+  all: unset;
+  display: grid;
+  place-items: center;
+  height: 23px;
+  width: 23px;
+  border-radius: 4px;
+  border: 1px solid #828282;
+}
+.inputNumber-container button span {
+  font-size: 16px;
+  color: #828282;
 }
