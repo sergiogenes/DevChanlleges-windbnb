@@ -4,6 +4,10 @@ export type Country = 'Finland'
 
 export type Location = `${City}, ${Country}`
 
+export type TypeStay = 'Entire apartment' | 'Entire house' | 'Private room'
+
+export type Beds = number | null
+
 export interface Stay {
   city: City
   country: Country
@@ -11,7 +15,7 @@ export interface Stay {
   title: string
   rating: number
   maxGuests: number
-  type: 'Entire apartment' | 'Entire house' | 'Private room'
-  beds: number | null
+  type: TypeStay
+  beds: Beds
   photo: string
 }

@@ -5,7 +5,7 @@ export const SearchBar = () => {
   const [wide, setWide] = useState(false)
   const searchBar = useRef<HTMLDivElement>(null)
 
-  const handleWide = (event: React.MouseEvent) => {
+  const handleWide = (_event: React.MouseEvent) => {
     if (!wide) {
       searchBar.current?.classList.add('wide')
       setWide(true)
