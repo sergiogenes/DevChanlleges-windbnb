@@ -79,7 +79,7 @@ export const Navbar = () => {
             <input
               type='text'
               id='location'
-              defaultValue={location}
+              value={location}
               ref={locationInput}
             />
           </label>
