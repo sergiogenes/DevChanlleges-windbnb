@@ -9,27 +9,28 @@ const InputNumber: FC = () => {
   }
 
   const handleDecrement = (event: MouseEvent<HTMLButtonElement>) => {
-    console.log(event.target)
+    if (count > 0) setCount(count - 1)
+  }
+
+  const handleIncrement = () => {
+    if (count < 10) setCount(count + 1)
   }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <button onClick={handleDecrement}>-</button>
+    <div className='inputNumber-container'>
+      <button onClick={handleDecrement}>
+        <span className='material-symbols-outlined'>remove</span>
+      </button>
       <input
         type='number'
         min={'0'}
         max={'10'}
-        style={{ textAlign: 'center' }}
         value={count}
         onChange={handleChange}
       />
-      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={handleIncrement}>
+        <span className='material-symbols-outlined'>add</span>
+      </button>
     </div>
   )
 }
