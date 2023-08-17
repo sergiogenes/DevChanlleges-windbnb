@@ -6,18 +6,23 @@ import { useSelector, useDispatch } from 'react-redux'
 import { AppDispatch, RootState } from '../../state/store'
 import { setLocation } from '../../state/locationSlice'
 import { Location } from '../../types'
+import { setGuests } from '../../state/guestsSlice'
 
 export const Navbar = () => {
   const [wide, setWide] = useState(false)
+  const [adults, setAdults] = useState<number>(0)
+  const [children, setChildren] = useState<number>(0)
   const navBarRef = useRef<HTMLDivElement>(null)
   const guestsInput = useRef<HTMLInputElement>(null)
   const guestsOptions = useRef<HTMLDivElement>(null)
   const locationInput = useRef<HTMLInputElement>(null)
   const locationOptions = useRef<HTMLDivElement>(null)
   const location: Location = useSelector((state: RootState) => state.location)
+  const guests: number = useSelector((state: RootState) => state.guests)
   const dispatch: AppDispatch = useDispatch()
 
   console.log('state ==>>', location)
+  console.log('guests ==>>', guests)
   const handleWide = () => {
     console.log('activeElement', document.activeElement)
     console.log('locationInput', locationInput.current)
@@ -47,6 +52,23 @@ export const Navbar = () => {
     dispatch(setLocation(newLocation))
   }
 
+  const onIncrementAdult = (value: number) => {
+    setAdults(value)
+    dispatch(setGuests(value + children))
+  }
+  const onDecrementAdult = (value: number) => {
+    setAdults(value)
+    dispatch(setGuests(value + children))
+  }
+  const onIncrementChildren = (value: number) => {
+    setChildren(value)
+    dispatch(setGuests(adults + value))
+  }
+  const onDecrementChildren = (value: number) => {
+    setChildren(value)
+    dispatch(setGuests(adults + value))
+  }
+
   return (
     <nav ref={navBarRef}>
       <img src={logo} alt='image of the logo' />
@@ -67,6 +89,7 @@ export const Navbar = () => {
               type='text'
               id='guests'
               placeholder='Add guests'
+              value={`${guests ? guests : ''}`}
               ref={guestsInput}
             />
           </label>
@@ -114,12 +137,20 @@ export const Navbar = () => {
           <div className='guests-options'>
             <h4>Adults</h4>
             <p>Ages 13 or above</p>
-            <InputNumber />
+            <InputNumber
+              value={adults}
+              onDecrement={onDecrementAdult}
+              onIncrement={onIncrementAdult}
+            />
           </div>
           <div className='guests-options'>
             <h4>Children</h4>
             <p>Ages 2-12</p>
-            <InputNumber />
+            <InputNumber
+              value={children}
+              onDecrement={onDecrementChildren}
+              onIncrement={onIncrementChildren}
+            />
           </div>
         </div>
       </div>
