@@ -3,6 +3,9 @@ import logo from '../../assets/logo.svg'
 import './index.css'
 import InputNumber from '../InputNumber/InputNumber'
 import { useSelector, useDispatch } from 'react-redux'
+import { AppDispatch, RootState } from '../../state/store'
+import { setLocation } from '../../state/locationSlice'
+import { Location } from '../../types'
 
 export const Navbar = () => {
   const [wide, setWide] = useState(false)
@@ -11,7 +14,8 @@ export const Navbar = () => {
   const guestsOptions = useRef<HTMLDivElement>(null)
   const locationInput = useRef<HTMLInputElement>(null)
   const locationOptions = useRef<HTMLDivElement>(null)
-  const location = useSelector((state) => state)
+  const location: Location = useSelector((state: RootState) => state.location)
+  const dispatch: AppDispatch = useDispatch()
 
   console.log('state ==>>', location)
   const handleWide = () => {
@@ -37,9 +41,10 @@ export const Navbar = () => {
     setWide(false)
   }
 
-  const pickLocation = (event: React.MouseEvent<HTMLOptionElement>) => {
+  const pickLocation = (newLocation: Location) => {
     console.log('click en options')
-    console.log(event.currentTarget.value)
+    console.log(newLocation)
+    dispatch(setLocation(newLocation))
   }
 
   return (
@@ -52,7 +57,7 @@ export const Navbar = () => {
             <input
               type='text'
               id='location'
-              defaultValue={'Helsinki, Finland'}
+              defaultValue={location}
               ref={locationInput}
             />
           </label>
@@ -72,19 +77,36 @@ export const Navbar = () => {
         <div className='location-options' ref={locationOptions}>
           <ul>
             <li>
-              <option value='Helsinki, Finland' onClick={pickLocation}>
-                {' '}
+              <option
+                value='Helsinki, Finland'
+                onClick={() => pickLocation('Helsinki, Finland')}
+              >
                 Helsinki, Finland
               </option>
             </li>
             <li>
-              <option value='Turku, Finland'>Turku, Finland</option>
+              <option
+                value='Turku, Finland'
+                onClick={() => pickLocation('Turku, Finland')}
+              >
+                Turku, Finland
+              </option>
             </li>
             <li>
-              <option value='Oulu, Finland'>Oulu, Finland</option>
+              <option
+                value='Oulu, Finland'
+                onClick={() => pickLocation('Oulu, Finland')}
+              >
+                Oulu, Finland
+              </option>
             </li>
             <li>
-              <option value='Vaasa, Finland'>Vaasa, Finland</option>
+              <option
+                value='Vaasa, Finland'
+                onClick={() => pickLocation('Vaasa, Finland')}
+              >
+                Vaasa, Finland
+              </option>
             </li>
           </ul>
         </div>

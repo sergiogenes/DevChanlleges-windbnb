@@ -1,6 +1,12 @@
+export type City = 'Helsinki' | 'Turku' | 'Oulu' | 'Vaasa'
+
+export type Country = 'Finland'
+
+export type Location = `${City}, ${Country}`
+
 export interface Stay {
-  city: string
-  country: string
+  city: City
+  country: Country
   superHost: boolean
   title: string
   rating: number

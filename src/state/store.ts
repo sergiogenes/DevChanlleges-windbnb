@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import locationReducer from './location'
+import locationReducer from './locationSlice'
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
     location: locationReducer,
   },
 })
+
+export default store
 
 export type RootState = ReturnType<typeof store.getState>
 
