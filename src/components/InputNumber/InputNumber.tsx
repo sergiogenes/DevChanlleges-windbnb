@@ -1,19 +1,31 @@
 import { FC, useState, ChangeEvent, MouseEvent } from 'react'
 import './InputNumber.css'
 
-const InputNumber: FC = () => {
-  const [count, setCount] = useState<number>(0)
+interface Props {
+  value: number
+  onIncrement: (n: number) => void
+  onDecrement: (n: number) => void
+}
+
+const InputNumber: FC<Props> = ({ value, onIncrement, onDecrement }) => {
+  const [count, setCount] = useState<number>(value)
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setCount(Number(event.target.value))
   }
 
-  const handleDecrement = (event: MouseEvent<HTMLButtonElement>) => {
-    if (count > 0) setCount(count - 1)
+  const handleDecrement = (_event: MouseEvent<HTMLButtonElement>) => {
+    if (count > 0) {
+      onDecrement(count - 1)
+      setCount(count - 1)
+    }
   }
 
   const handleIncrement = () => {
-    if (count < 10) setCount(count + 1)
+    if (count < 10) {
+      onIncrement(count + 1)
+      setCount(count + 1)
+    }
   }
 
   return (
