@@ -68,6 +68,14 @@ export const Navbar = () => {
     setChildren(value)
     dispatch(setGuests(adults + value))
   }
+  const handleInputGuests = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Number(event.target.value)
+    if (value > 0 && value <= 10) {
+      dispatch(setGuests(value))
+      setAdults(value)
+      setChildren(0)
+    }
+  }
 
   return (
     <nav ref={navBarRef}>
@@ -91,6 +99,7 @@ export const Navbar = () => {
               placeholder='Add guests'
               value={`${guests ? guests : ''}`}
               ref={guestsInput}
+              onChange={handleInputGuests}
             />
           </label>
           <button type='submit'>
