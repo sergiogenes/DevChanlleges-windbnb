@@ -9,64 +9,64 @@ import { Location } from '../../types'
 import { setGuests } from '../../state/guestsSlice'
 
 export const Navbar = () => {
+  const location: Location = useSelector((state: RootState) => state.location)
+  const guests: number = useSelector((state: RootState) => state.guests)
   const [wide, setWide] = useState(false)
   const [adults, setAdults] = useState<number>(0)
   const [children, setChildren] = useState<number>(0)
+  const [locationState, setLocationState] = useState<Location>(location)
   const navBarRef = useRef<HTMLDivElement>(null)
-  const guestsInput = useRef<HTMLInputElement>(null)
-  const guestsOptions = useRef<HTMLDivElement>(null)
-  const locationInput = useRef<HTMLInputElement>(null)
-  const locationOptions = useRef<HTMLDivElement>(null)
-  const location: Location = useSelector((state: RootState) => state.location)
-  const guests: number = useSelector((state: RootState) => state.guests)
+  const guestsInputRef = useRef<HTMLInputElement>(null)
+  const guestsOptionsRef = useRef<HTMLDivElement>(null)
+  const locationInputRef = useRef<HTMLInputElement>(null)
+  const locationOptionsRef = useRef<HTMLDivElement>(null)
   const dispatch: AppDispatch = useDispatch()
 
-  console.log('state ==>>', location)
-  console.log('guests ==>>', guests)
   const handleWide = () => {
-    console.log('activeElement', document.activeElement)
-    console.log('locationInput', locationInput.current)
     if (!wide) {
       navBarRef.current?.classList.add('wide')
       setWide(true)
     }
-    if (document.activeElement === locationInput.current) {
-      locationOptions.current?.classList.add('visible')
-      guestsOptions.current?.classList.remove('visible')
+    if (document.activeElement === locationInputRef.current) {
+      locationOptionsRef.current?.classList.add('visible')
+      guestsOptionsRef.current?.classList.remove('visible')
     }
-    if (document.activeElement === guestsInput.current) {
-      locationOptions.current?.classList.remove('visible')
-      guestsOptions.current?.classList.add('visible')
+    if (document.activeElement === guestsInputRef.current) {
+      locationOptionsRef.current?.classList.remove('visible')
+      guestsOptionsRef.current?.classList.add('visible')
     }
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
+    dispatch(setLocation(locationState))
+    dispatch(setGuests(adults + children))
     navBarRef.current?.classList.remove('wide')
     setWide(false)
   }
 
   const pickLocation = (newLocation: Location) => {
-    console.log('click en options')
-    console.log(newLocation)
-    dispatch(setLocation(newLocation))
+    //console.log('click en options')
+    //console.log(newLocation)
+    //dispatch(setLocation(newLocation))
+    setLocationState(newLocation)
   }
 
   const onIncrementAdult = (value: number) => {
     setAdults(value)
-    dispatch(setGuests(value + children))
+    //dispatch(setGuests(value + children))
   }
   const onDecrementAdult = (value: number) => {
     setAdults(value)
-    dispatch(setGuests(value + children))
+    //dispatch(setGuests(value + children))
   }
   const onIncrementChildren = (value: number) => {
     setChildren(value)
-    dispatch(setGuests(adults + value))
+    //dispatch(setGuests(adults + value))
   }
   const onDecrementChildren = (value: number) => {
     setChildren(value)
-    dispatch(setGuests(adults + value))
+    //dispatch(setGuests(adults + value))
   }
   const handleInputGuests = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = Number(event.target.value)
@@ -87,8 +87,8 @@ export const Navbar = () => {
             <input
               type='text'
               id='location'
-              value={location}
-              ref={locationInput}
+              value={locationState}
+              ref={locationInputRef}
             />
           </label>
           <label htmlFor='guests'>
@@ -97,8 +97,10 @@ export const Navbar = () => {
               type='text'
               id='guests'
               placeholder='Add guests'
-              value={`${guests ? guests : ''}`}
-              ref={guestsInput}
+              value={`${adults + children} ${
+                adults + children > 1 ? 'guests' : 'guest'
+              } `}
+              ref={guestsInputRef}
               onChange={handleInputGuests}
             />
           </label>
@@ -106,7 +108,7 @@ export const Navbar = () => {
             <span className='material-icons'>search</span>
           </button>
         </form>
-        <div className='location-options' ref={locationOptions}>
+        <div className='location-options' ref={locationOptionsRef}>
           <ul>
             <li>
               <option
@@ -142,7 +144,7 @@ export const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className='guests-container' ref={guestsOptions}>
+        <div className='guests-container' ref={guestsOptionsRef}>
           <div className='guests-options'>
             <h4>Adults</h4>
             <p>Ages 13 or above</p>

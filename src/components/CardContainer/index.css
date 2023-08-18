@@ -3,4 +3,5 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 34px;
   row-gap: 50px;
+  min-height: 570px;
 }
