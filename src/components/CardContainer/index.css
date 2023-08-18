@@ -5,3 +5,10 @@
   row-gap: 50px;
   min-height: 570px;
 }
+
+@media screen and (max-width: 475px) {
+  .card-container {
+    grid-template-columns: 1fr;
+    row-gap: 32px;
+  }
+}

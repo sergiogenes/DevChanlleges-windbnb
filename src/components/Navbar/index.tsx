@@ -10,7 +10,6 @@ import { setGuests } from '../../state/guestsSlice'
 
 export const Navbar = () => {
   const location: Location = useSelector((state: RootState) => state.location)
-  const guests: number = useSelector((state: RootState) => state.guests)
   const [wide, setWide] = useState(false)
   const [adults, setAdults] = useState<number>(0)
   const [children, setChildren] = useState<number>(0)
@@ -77,10 +76,18 @@ export const Navbar = () => {
     }
   }
 
+  const handleClose = () => {
+    navBarRef.current?.classList.remove('wide')
+    setWide(false)
+  }
+
   return (
     <nav ref={navBarRef}>
       <img src={logo} alt='image of the logo' />
       <div className='search-bar-container' onClick={handleWide}>
+        <div className='close' onClick={handleClose}>
+          <span className='material-symbols-outlined'>close</span>
+        </div>
         <form onSubmit={handleSubmit}>
           <label htmlFor='location'>
             <p>Location</p>
