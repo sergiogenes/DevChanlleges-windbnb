@@ -76,10 +76,18 @@ export const Navbar = () => {
     }
   }
 
+  const handleClose = () => {
+    navBarRef.current?.classList.remove('wide')
+    setWide(false)
+  }
+
   return (
     <nav ref={navBarRef}>
       <img src={logo} alt='image of the logo' />
       <div className='search-bar-container' onClick={handleWide}>
+        <div className='close' onClick={handleClose}>
+          <span className='material-symbols-outlined'>close</span>
+        </div>
         <form onSubmit={handleSubmit}>
           <label htmlFor='location'>
             <p>Location</p>
