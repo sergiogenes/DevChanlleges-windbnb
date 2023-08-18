@@ -101,7 +101,6 @@ export const Navbar = () => {
           <label htmlFor='guests'>
             <p>Guests</p>
             <input
-              disabled
               type='text'
               id='guests'
               placeholder='Add guests'
