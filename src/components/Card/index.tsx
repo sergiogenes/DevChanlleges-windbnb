@@ -6,7 +6,11 @@ interface Props {
 }
 
 const SuperHost: React.FC = () => {
-  return <div className='super-host'>SUPER HOST</div>
+  return (
+    <div className='super-host'>
+      <p>SUPER HOST</p>
+    </div>
+  )
 }
 
 export const Card: React.FC<Props> = ({ stay }) => {
@@ -19,7 +23,7 @@ export const Card: React.FC<Props> = ({ stay }) => {
             {stay.superHost ? <SuperHost /> : null}
             <p>
               {stay.type === 'Entire apartment' && stay.beds
-                ? `${stay.type}.${stay.beds} beds`
+                ? `${stay.type}. ${stay.beds} beds`
                 : `${stay.type}`}
             </p>
           </div>

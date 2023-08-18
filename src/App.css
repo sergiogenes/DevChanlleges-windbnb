@@ -5,3 +5,9 @@
 h1 {
   font-family: 'Mulish', sans-serif;
 }
+
+@media screen and (max-width: 475px) {
+  .app-container {
+    margin: 19px 12px 0px 12px;
+  }
+}

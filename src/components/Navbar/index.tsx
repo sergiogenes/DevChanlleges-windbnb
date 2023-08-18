@@ -10,7 +10,6 @@ import { setGuests } from '../../state/guestsSlice'
 
 export const Navbar = () => {
   const location: Location = useSelector((state: RootState) => state.location)
-  const guests: number = useSelector((state: RootState) => state.guests)
   const [wide, setWide] = useState(false)
   const [adults, setAdults] = useState<number>(0)
   const [children, setChildren] = useState<number>(0)

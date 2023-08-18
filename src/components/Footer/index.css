@@ -22,3 +22,10 @@ footer p strong {
   line-height: normal;
   text-decoration-line: underline;
 }
+
+@media screen and (max-width: 475px) {
+  footer {
+    margin: 50px auto 26px;
+    text-align: center;
+  }
+}

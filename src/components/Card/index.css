@@ -5,6 +5,9 @@
   height: 28px;
   border-radius: 12px;
   border: 1px solid #4f4f4f;
+}
+
+.super-host p {
   color: #4f4f4f;
   font-family: Montserrat;
   font-size: 12px;
@@ -16,7 +19,7 @@
 
 .card {
   width: 395px;
-  height: 344px;
+  aspect-ratio: calc(395 / 344);
 }
 .card img {
   width: 100%;
@@ -72,4 +75,34 @@
   font-weight: 600;
   line-height: normal;
   margin-top: 12px;
+}
+
+@media screen and (max-width: 475px) {
+  .card {
+    width: 350px;
+    height: 344px;
+  }
+
+  .super-host {
+    width: 88.608px;
+    height: 24.81px;
+  }
+
+  .super-host p {
+    font-size: 10px;
+  }
+
+  .type-stay-text > p {
+    font-size: 12px;
+  }
+
+  .stay-rating .rating-number {
+    font-size: 12px;
+  }
+  .stay-rating .material-icons {
+    font-size: 16px;
+  }
+  .row h5 {
+    font-size: 14px;
+  }
 }

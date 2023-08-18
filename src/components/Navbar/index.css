@@ -1,6 +1,7 @@
 nav {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   transition: all 0.5s;
   transform-origin: right;
 }
@@ -69,6 +70,9 @@ input {
   height: 53px;
   background-color: #fff;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .search-bar-container form button span {
   color: #eb5757;
@@ -155,9 +159,6 @@ label:focus {
 .wide .search-bar-container form button {
   width: 127px;
   height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   gap: 11px;
   align-self: center;
   margin: auto;
@@ -239,4 +240,15 @@ label:focus {
 
 .visible {
   opacity: 1;
+}
+
+@media screen and (max-width: 450px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 37px;
+  }
+  .search-bar-container {
+    align-self: center;
+  }
 }
