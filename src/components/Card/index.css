@@ -18,7 +18,7 @@
 }
 
 .card {
-  width: 395px;
+  width: 100%;
   aspect-ratio: calc(395 / 344);
 }
 .card img {
@@ -77,9 +77,15 @@
   margin-top: 12px;
 }
 
+@media screen and (max-width: 1024px) {
+  .card {
+    max-width: 400px;
+  }
+}
+
 @media screen and (max-width: 475px) {
   .card {
-    width: 350px;
+    max-width: 350px;
   }
 
   .super-host {
