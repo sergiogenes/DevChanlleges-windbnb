@@ -6,9 +6,16 @@
   min-height: 570px;
 }
 
-@media screen and (max-width: 475px) {
+@media screen and (max-width: 1024px) {
+  .card-container {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 32px;
+  }
+}
+@media screen and (max-width: 768px) {
   .card-container {
     grid-template-columns: 1fr;
     row-gap: 32px;
+    justify-items: center;
   }
 }

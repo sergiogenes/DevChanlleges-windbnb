@@ -238,7 +238,7 @@ label:focus {
   display: block;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 768px) {
   nav {
     flex-direction: column;
     align-items: flex-start;
@@ -251,7 +251,7 @@ label:focus {
     position: absolute;
     top: 0;
     right: 0;
-    width: 375px;
+    width: 100%;
     height: 632px;
   }
 
@@ -278,7 +278,7 @@ label:focus {
   }
 
   .wide > .search-bar-container > form {
-    width: 351px;
+    width: 93.6%;
     height: 113px;
     display: flex;
     flex-direction: column;
